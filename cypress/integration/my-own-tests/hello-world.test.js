@@ -41,6 +41,19 @@ describe('Basic Tests', () => {
         cy.url().should("include", "/password-reset")
     })
 
+    it('Checks the signin unauth popup', () => {
+        cy.viewport(1280, 720)
+        cy.visit('https://codedamn.com')
+        cy.contains("Sign In").click()
+
+        cy.get('input#email').type('cypress-email')
+        cy.get('input#password').type('cypress-password')
+
+        cy.get('[data-testid="login"]').click()
+        cy.contains('Unable to authorize').should('exist')
+
+    })
+
     it('Loads the create account page and fills in the form', () => {
         cy.viewport(1280, 720)
         cy.visit('https://codedamn.com')
