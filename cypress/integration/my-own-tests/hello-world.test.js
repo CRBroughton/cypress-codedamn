@@ -9,5 +9,7 @@ describe('Basic Tests', () => {
 
         // Checks to see if a div with the ID of root exists
         cy.get('div#root')
+
+        cy.get('[data-testid="logo"]')
     })
 })
