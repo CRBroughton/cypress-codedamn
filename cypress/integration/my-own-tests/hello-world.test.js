@@ -1,11 +1,15 @@
 /// <reference types="cypress" />
 
 describe('Basic Tests', () => {
-    it('We have the correct page title', () => {
+
+    beforeEach(() => {
         // Changes the viewport size, can use built in mobile sizes
         cy.viewport(1280, 720)
 
         cy.visit('https://codedamn.com')
+    })
+    it('We have the correct page title', () => {
+
 
         // Searches for text within the DOM, can be partial
         cy.contains('Be industry-ready fullstack coder. 10x faster and 100x cheaper.')
@@ -18,8 +22,6 @@ describe('Basic Tests', () => {
     })
 
     it('Loads the create account page', () => {
-        cy.viewport(1280, 720)
-        cy.visit('https://codedamn.com')
         cy.contains("Create a free account").click()
         
         // Makes sure the login form exists
@@ -30,8 +32,6 @@ describe('Basic Tests', () => {
     })
 
     it('Checks the forgot password link', () => {
-        cy.viewport(1280, 720)
-        cy.visit('https://codedamn.com')
         cy.contains("Sign In").click()
 
         //Makes sure the Forgot your password exists and works properly
@@ -42,8 +42,6 @@ describe('Basic Tests', () => {
     })
 
     it('Checks the signin unauth popup', () => {
-        cy.viewport(1280, 720)
-        cy.visit('https://codedamn.com')
         cy.contains("Sign In").click()
 
         cy.get('input#email').type('cypress-email')
