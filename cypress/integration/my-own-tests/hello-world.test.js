@@ -40,4 +40,21 @@ describe('Basic Tests', () => {
         cy.contains("Forgot your password?").click()
         cy.url().should("include", "/password-reset")
     })
+
+    it('Loads the create account page and fills in the form', () => {
+        cy.viewport(1280, 720)
+        cy.visit('https://codedamn.com')
+        cy.contains("Create a free account").click()
+        
+        // Makes sure the login form exists
+        cy.contains("Username").should('exist')
+        cy.contains("Email address").should('exist')
+        cy.contains("Password").should('exist')
+
+        cy.get('input#username').type("username")
+        cy.get('input#email').type("cypress-email")
+        cy.get('input#password').type("cypress-password")
+
+
+    })
 })
