@@ -16,4 +16,25 @@ describe('Basic Tests', () => {
         // Get custom attribute
         cy.get('[data-testid="logo"]')
     })
+
+    it('Loads the create account page', () => {
+        cy.viewport(1280, 720)
+        cy.visit('https://codedamn.com')
+        cy.contains("Create a free account").click()
+        
+        // Makes sure the login form exists
+        cy.contains("Username").should('exist')
+        cy.contains("Email address").should('exist')
+        cy.contains("Password").should('exist')
+
+    })
+
+    it('Checks the forgot password link', () => {
+        cy.viewport(1280, 720)
+        cy.visit('https://codedamn.com')
+        cy.contains("Sign In").click()
+
+        //Makes sure the Forgot your password exists and works properly
+        cy.contains("Forgot your password?").should('exist')
+    })
 })
