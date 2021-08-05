@@ -36,7 +36,7 @@ describe('Basic Tests', () => {
 
         //Makes sure the Forgot your password exists and works properly
         cy.contains("Forgot your password?").should('exist')
-
+        // Verify the page url
         cy.contains("Forgot your password?").click()
         cy.url().should("include", "/password-reset")
     })
