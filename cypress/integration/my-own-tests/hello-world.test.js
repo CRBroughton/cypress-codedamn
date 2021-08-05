@@ -2,6 +2,9 @@
 
 describe('Basic Tests', () => {
     it('We have the correct page title', () => {
+        // Changes the viewport size, can use built in mobile sizes
+        cy.viewport(1280, 720)
+
         cy.visit('https://codedamn.com')
 
         // Searches for text within the DOM, can be partial
